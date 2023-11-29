@@ -8,34 +8,27 @@ type SkillIconsProps = {
 };
 
 export const SkillIcons = ({ skills }: SkillIconsProps) => {
-  const [selectedSkill, setSelectedSkill] = useState<SkillData | null>(null);
-  const handleSkillClick = (skill: SkillData | null) => {
-    setSelectedSkill(skill);
-  };
   return (
     <>
       {skills.map((skill) => (
-        <SkillIcon
-          key={skill.name}
-          skill={skill}
-          isSelected={selectedSkill === skill}
-          onClick={handleSkillClick}
-        />
+        <SkillIcon key={skill.name} skill={skill} />
       ))}
     </>
   );
 };
 type SkillIconProps = {
   skill: SkillData;
-  isSelected: boolean;
-  onClick: (skill: SkillData | null) => void;
 };
-const SkillIcon = ({ skill, isSelected, onClick }: SkillIconProps) => {
+const SkillIcon = ({ skill }: SkillIconProps) => {
+  const [isSelected, setIsSelected] = useState(false);
   return (
     <div
       className="relative group"
-      onClick={() => {
-        onClick(isSelected ? null : skill);
+      onMouseEnter={() => {
+        setIsSelected(true);
+      }}
+      onMouseOut={() => {
+        setIsSelected(false);
       }}
     >
       <img
