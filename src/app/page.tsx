@@ -10,7 +10,15 @@ const TopPage = async () => {
     content_type: "topPage",
   });
   const skills = await contentfulClient.getEntries({ content_type: "skill" });
-  console.log(skills.items);
+  console.log(
+    (content.items[0].fields.contacts as any[]).map((c) => {
+      return {
+        name: c.fields.name as string,
+        imageUrl: ("https:" + c.fields.image.fields.file.url) as string,
+        url: c.fields.url as string,
+      };
+    })
+  );
   return (
     <>
       <PortfolioBody
@@ -22,6 +30,13 @@ const TopPage = async () => {
             name: sk.fields.name as string,
             iconPath: sk.fields.imageUrl as string,
             description: sk.fields.description as string,
+          };
+        })}
+        contacts={(content.items[0].fields.contacts as any[]).map((c) => {
+          return {
+            name: c.fields.name as string,
+            imageUrl: ("https:" + c.fields.image.fields.file.url) as string,
+            url: c.fields.url as string,
           };
         })}
       />

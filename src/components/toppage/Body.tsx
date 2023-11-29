@@ -9,6 +9,7 @@ type PortfolioBodyProps = {
   jobs: string[];
   awards: string[];
   skills: SkillData[];
+  contacts: any[];
 };
 
 const PortfolioBody = ({
@@ -16,6 +17,7 @@ const PortfolioBody = ({
   jobs,
   awards,
   skills,
+  contacts,
 }: PortfolioBodyProps) => {
   const [ref1, isVisible1] = useOnScreen({ rootMargin: "-100px" });
   const [ref2, isVisible2] = useOnScreen({ rootMargin: "-100px" });
@@ -25,7 +27,7 @@ const PortfolioBody = ({
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-blue-500 to-teal-400 p-6">
       <div
         className="bg-white p-8 rounded-lg shadow-xl space-y-6"
-        style={{ width: "36rem" }}
+        style={{ maxWidth: "36rem" }}
       >
         <div className="flex justify-center">
           <Image
@@ -94,40 +96,17 @@ const PortfolioBody = ({
           <div className="text-center space-y-2">
             <h2 className="font-bold text-blue-600">連絡先</h2>
             <div className="flex justify-center space-x-6 mt-3">
-              <a
-                href="https://twitter.com/MogamiTsuchikaw"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Twitter"
-              >
-                <img
-                  src="https://mogami-dev.g.kuroco-img.app/files/user/twitter-x.svg"
-                  alt="Twitter Icon"
-                  width={64}
-                  height={64}
-                />
-              </a>
-              <a
-                href="https://github.com/MogamiTsuchikawa"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-              >
-                <img
-                  src="https://mogami-dev.g.kuroco-img.app/files/user/github-mark.png"
-                  alt="GitHub Icon"
-                  width={64}
-                  height={64}
-                />
-              </a>
-              <a href="mailto:example@example.com" aria-label="Email">
-                <img
-                  src="/path_to_email_icon.svg"
-                  alt="Email Icon"
-                  width={64}
-                  height={64}
-                />
-              </a>
+              {contacts.map((c) => (
+                <a
+                  key={c.name}
+                  href={c.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={c.name}
+                >
+                  <img src={c.imageUrl} alt={c.name} width={64} height={64} />
+                </a>
+              ))}
             </div>
           </div>
         </div>
