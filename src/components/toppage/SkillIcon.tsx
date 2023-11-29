@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-type SkillData = { name: string; iconPath: string; description: string };
+export type SkillData = { name: string; iconPath: string; description: string };
 
 type SkillIconsProps = {
   skills: SkillData[];

@@ -1,32 +1,25 @@
 "use client";
 import useOnScreen from "../../hooks/useOnScreen";
-import { SkillIcons } from "@/components/toppage/SkillIcon";
+import { SkillData, SkillIcons } from "@/components/toppage/SkillIcon";
 import { Document } from "@contentful/rich-text-types";
+import Image from "next/image";
 
 type PortfolioBodyProps = {
   message: Document;
   jobs: string[];
   awards: string[];
+  skills: SkillData[];
 };
 
-const PortfolioBody = ({ message, jobs, awards }: PortfolioBodyProps) => {
+const PortfolioBody = ({
+  message,
+  jobs,
+  awards,
+  skills,
+}: PortfolioBodyProps) => {
   const [ref1, isVisible1] = useOnScreen({ rootMargin: "-100px" });
   const [ref2, isVisible2] = useOnScreen({ rootMargin: "-100px" });
   const [ref3, isVisible3] = useOnScreen({ rootMargin: "-100px" });
-  const skills = [
-    {
-      name: "JavaScript",
-      iconPath: "/path_to_js_icon.svg",
-      description: "JavaScript is a programming language...",
-    },
-    {
-      name: "React",
-      iconPath: "/path_to_react_icon.svg",
-      description:
-        "React is a JavaScript library for building user interfaces...",
-    },
-    // 他のスキルを追加...
-  ];
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-blue-500 to-teal-400 p-6">
@@ -35,8 +28,8 @@ const PortfolioBody = ({ message, jobs, awards }: PortfolioBodyProps) => {
         style={{ width: "36rem" }}
       >
         <div className="flex justify-center">
-          <img
-            src="https://mogami-dev.g.kuroco-img.app/files/user/icon_400x400.jpg"
+          <Image
+            src="icon_400x400.webp"
             alt="最上土川のアイコン"
             className="rounded-full border-4 border-gray-300"
             width={160}
