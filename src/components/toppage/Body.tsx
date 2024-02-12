@@ -5,7 +5,7 @@ import { Document } from "@contentful/rich-text-types";
 import Image from "next/image";
 
 type PortfolioBodyProps = {
-  message: Document;
+  message: string;
   jobs: string[];
   awards: string[];
   skills: SkillData[];
