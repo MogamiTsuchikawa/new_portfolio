@@ -1,5 +1,4 @@
 import * as cf from "contentful";
-import { Document } from "@contentful/rich-text-types";
 
 const config = {
   space: process.env.CONTENTFUL_SPACE_ID!,
