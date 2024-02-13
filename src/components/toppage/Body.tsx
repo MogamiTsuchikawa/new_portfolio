@@ -1,7 +1,6 @@
 "use client";
 import useOnScreen from "../../hooks/useOnScreen";
 import { SkillData, SkillIcons } from "@/components/toppage/SkillIcon";
-import { Document } from "@contentful/rich-text-types";
 import Image from "next/image";
 
 type PortfolioBodyProps = {
